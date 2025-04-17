@@ -1,1 +1,10 @@
-<app-header></app-header>
+<app-header/>
+
+<main>
+  <ul id="users" #list>
+    <li *ngFor="let user of allUserData">
+      <app-user [user]="user" (newUserSelected)="checkUserSelected($event)"/>
+    </li> 
+  </ul>
+ 
+</main>
