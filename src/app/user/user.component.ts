@@ -10,14 +10,13 @@ import { NgClass } from '@angular/common';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  user=input<User>();  
-  @Output() newUserSelected=new EventEmitter<boolean>();
-  
+  user=input.required<User>();
+  @Input({required:true}) selectButton!:boolean;
+  @Output() newUserSelected=new EventEmitter<string>();
+
   imagePath=computed(()=>'../../assets/users/' + this.user()?.avatar)
 
-  onSelectUser(button:HTMLButtonElement){
-  this.newUserSelected.emit(true)
-  button.classList.add('active')
-   
+  onSelectUser(id:string){
+  this.newUserSelected.emit(id)
   }
 }
